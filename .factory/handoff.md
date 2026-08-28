@@ -37,7 +37,7 @@ co-op flow, a full valid solution, privacy, and axe-core.
 Verified 2026-08-28:
 
 - Vitest: 5/5 passed, including determinism and solvability sampling.
-- Playwright: 5/5 passed; no console errors in the load smoke test.
+- Playwright: 6/6 passed; no console errors in the load smoke test.
 - axe-core 4.13: 0 serious or critical violations.
 - `npm audit`: 0 vulnerabilities.
 - Production payload: 13.45 KB JS (5.96 KB gzip), 11.64 KB CSS (3.60 KB

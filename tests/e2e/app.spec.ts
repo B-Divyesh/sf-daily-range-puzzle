@@ -21,7 +21,8 @@ test('first move creates a cooperative share action', async ({ page, context }) 
   await page.goto('/?day=2026-08-28');
   const open = page.locator('.hex:not([aria-disabled="true"])').first();
   await open.click();
-  await expect(page.getByRole('button', { name: 'Send first move' })).toBeVisible();
+  await page.getByRole('button', { name: 'Send first move' }).click();
+  await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain('relay=');
 });
 
 test('a valid two-relay chain completes end to end', async ({ page }) => {
@@ -30,6 +31,14 @@ test('a valid two-relay chain completes end to end', async ({ page }) => {
   await page.locator('[data-cell="4,2"]').click();
   await expect(page.locator('#game-status')).toContainText('Signal linked');
   await expect(page.getByRole('button', { name: 'Share result' })).toBeVisible();
+});
+
+test('a friend can finish a shared first move', async ({ page }) => {
+  await page.goto('/?day=2026-08-28&relay=2%2C1');
+  await expect(page.getByText('A friend started this route.')).toBeVisible();
+  await expect(page.locator('[data-cell="2,1"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('[data-cell="4,2"]').click();
+  await expect(page.locator('#game-status')).toContainText('Signal linked');
 });
 
 test('privacy route explains local-only storage', async ({ page }) => {
