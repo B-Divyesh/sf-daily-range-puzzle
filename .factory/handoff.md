@@ -1,59 +1,53 @@
-# Daily Range Puzzle — build handoff
+# Daily Range Puzzle — independent verification handoff
 
-## What shipped
+## Verdict: FAIL
 
-- Complete deterministic daily 7×5 hex puzzle with guaranteed valid routes.
-- Clear 1 hex = 1 km scale; two-relay, 3 km-per-hop, lookout, and blocked
-  terrain rules with immediate textual and visual feedback.
-- Cooperative share link carrying only the date and first relay coordinate;
-  incoming links pin the teammate move. Completed puzzles create a
-  spoiler-safe share card.
-- Full touch, mouse, and keyboard play (arrows, Enter/Space, Backspace), 44 px
-  mobile targets, date replay, invalid-link handling, optional local-only
-  completion restore, and offline shell/map generation.
-- Responsive field-notes risograph visual system. Original AI-assisted hero
-  was generated with the factory Azure image deployment, reviewed, and reduced
-  from a retained source PNG to a 100.83 KB WebP. Prompt and provenance live in
-  `.factory/design.md` and `assets/src/range-field-map.png.json`.
-- Semantic page structure, one h1 per route, skip link, named controls, visible
-  focus, color-independent terrain symbols, live status, reduced-motion mode,
-  privacy and terms routes, PWA manifest/service worker, robots policy, and
-  static-host security headers.
+Candidate `9ce460079d304357c6d5c72e7df64948ee584c49` was independently tested on
+2026-08-28 against <https://daily-range-puzzle.sociobot.in>. The live files are
+byte-for-byte identical to the candidate build, so this is not a stale or
+deployment-only failure.
 
-## How to run and verify
+Release blockers:
+
+1. `.factory/claims.json` is missing; the mandatory claim suite therefore
+   cannot run.
+2. The cold first screen has no one-click sample-data/demo action.
+3. The core cooperative handoff accepts dead-end first moves. For the current
+   map, sharing relay `4,2` pins an over-range move that the recipient cannot
+   undo or complete. Across all 240 available days, 4,205/5,408 legal first
+   placements (77.8%) cannot lead to a solution in that order.
+4. At 390 px and 200% text size, the hero heading, copy, and primary action are
+   clipped rather than reflowed.
+
+Additional defects: clipboard denial produces an unhandled error with no user
+recovery; several mobile links are under 44 px high; impossible dates such as
+`2026-02-31` are accepted and inconsistently displayed; hashed assets receive
+only a 30-second cache lifetime; no CSP is sent.
+
+Full evidence, severity, command results, deployment hashes, browser coverage,
+Lighthouse results, privacy checks, and required remediation are in
+[`verification-1.md`](verification-1.md).
+
+## Passing checks
 
 ```sh
-npm install
+npm ci
+npm audit --audit-level=moderate
 npm test
 npm run build
 npm run test:e2e
 ```
 
-Build command: `npm run build`. Deployment root: `./dist`; `dist/index.html`
-is present at that root. The browser suite uses Playwright 1.58.2 and runs at a
-390×844 viewport, covering initial load/console, 44 px tile targets, first-move
-co-op flow, a full valid solution, privacy, and axe-core.
+Results: 0 audit vulnerabilities, 5/5 unit tests, exact production build, and
+6/6 repository E2E tests. The repository has no lint script and no
+`verify-url.sh`. Live axe scans found no violations in initial, solved, privacy,
+or terms states. Keyboard play, reduced motion, valid co-op, local-only
+storage, service-worker update, and offline prior-day reload pass. Live mobile
+Lighthouse scores were 85/94/95 (median 94); the latter two accessibility,
+best-practices, and SEO scores were 100. Bundles are within budget.
 
-Verified 2026-08-28:
+## Scope and tree state
 
-- Vitest: 5/5 passed, including determinism and solvability sampling.
-- Playwright: 6/6 passed; no console errors in the load smoke test.
-- axe-core 4.13: 0 serious or critical violations.
-- `npm audit`: 0 vulnerabilities.
-- Production payload: 13.45 KB JS (5.96 KB gzip), 11.64 KB CSS (3.60 KB
-  gzip), 100.83 KB hero WebP; Lighthouse transfer total 111 KB.
-- Lighthouse mobile: Performance 100, Accessibility 100, Best Practices 100,
-  SEO 100; FCP 1.0 s, LCP 1.1 s, TBT 90 ms, CLS 0. Lab run used headless
-  Chromium against the local production preview.
-- Desktop and 390 px full-page screenshots were manually inspected; layout,
-  map labels, hero crop, and focus/touch affordances remain legible.
-
-## Known gaps / next steps
-
-- The cooperative layer is deliberately turn-based through a URL, not live
-  presence or chat, matching the brief's static/no-account scope.
-- Browser Web Share behavior varies by platform; the implementation falls back
-  to clipboard where Web Share is unavailable.
-- Product success metrics are intentionally not collected in-product because
-  the privacy contract forbids gameplay analytics. The hosting layer may add
-  an aggregate privacy-preserving page count outside this repository.
+No product code was changed. This verification adds only the verification
+report and replaces the prior builder handoff with this unambiguous result.
+The pre-existing untracked `graphify-out/` directory was not staged.
