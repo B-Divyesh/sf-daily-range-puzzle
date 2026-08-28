@@ -1,0 +1,8 @@
+{
+  "navigationFallback": { "rewrite": "/index.html", "exclude": ["/assets/*", "/*.svg", "/*.webmanifest", "/sw.js"] },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "no-referrer",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+  }
+}
