@@ -1,0 +1,74 @@
+{
+  ".factory/brief.json": {
+    "mtime": 1787907639.4579957,
+    "seen": 1787907640.6564097,
+    "ast_hash": "7044229df377689c5237298e9f7b6976",
+    "semantic_hash": "7044229df377689c5237298e9f7b6976"
+  },
+  "assets/src/range-field-map.png.json": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564145,
+    "ast_hash": "e9b4a6f3e4b429967a653e24ff9275f8",
+    "semantic_hash": "e9b4a6f3e4b429967a653e24ff9275f8"
+  },
+  "package.json": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564162,
+    "ast_hash": "f1598a8f81d4301907bf32cc995d2cdc",
+    "semantic_hash": "f1598a8f81d4301907bf32cc995d2cdc"
+  },
+  "playwright.config.ts": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564176,
+    "ast_hash": "b3233040de79a395c03026e683f4fc76",
+    "semantic_hash": "b3233040de79a395c03026e683f4fc76"
+  },
+  "public/staticwebapp.config.json": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564186,
+    "ast_hash": "1d5d504f68005d74be8cf87fc48aa931",
+    "semantic_hash": "1d5d504f68005d74be8cf87fc48aa931"
+  },
+  "public/sw.js": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564193,
+    "ast_hash": "d65513ac07bca8958a05911199896efa",
+    "semantic_hash": "d65513ac07bca8958a05911199896efa"
+  },
+  "src/game.ts": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564207,
+    "ast_hash": "9ebbc2ddb0ae8cbaac6ecaea5be12d35",
+    "semantic_hash": "9ebbc2ddb0ae8cbaac6ecaea5be12d35"
+  },
+  "src/main.ts": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564214,
+    "ast_hash": "06c3b5374b55389d0f8a83c841d72dce",
+    "semantic_hash": "06c3b5374b55389d0f8a83c841d72dce"
+  },
+  "tests/e2e/app.spec.ts": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.6564221,
+    "ast_hash": "2ae942c4526c8f75d9f29312b14346be",
+    "semantic_hash": "2ae942c4526c8f75d9f29312b14346be"
+  },
+  "tests/game.test.ts": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.656423,
+    "ast_hash": "f8b17289b84beb482ecdd7ef48a44beb",
+    "semantic_hash": "f8b17289b84beb482ecdd7ef48a44beb"
+  },
+  "tsconfig.json": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.656424,
+    "ast_hash": "0789778b605bc570d78986242e59b854",
+    "semantic_hash": "0789778b605bc570d78986242e59b854"
+  },
+  "vite.config.ts": {
+    "mtime": 1787907639.4699957,
+    "seen": 1787907640.656425,
+    "ast_hash": "a4ebafcd1410871e17ad0c190518fe86",
+    "semantic_hash": "a4ebafcd1410871e17ad0c190518fe86"
+  }
+}

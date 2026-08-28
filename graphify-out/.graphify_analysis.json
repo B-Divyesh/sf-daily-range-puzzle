@@ -1,0 +1,237 @@
+{
+  "communities": {
+    "0": [
+      "src_game_cellkey",
+      "src_game_isvalidday",
+      "src_main",
+      "src_main_bindgame",
+      "src_main_cellmarkup",
+      "src_main_chrome",
+      "src_main_copyorshare",
+      "src_main_glyphs",
+      "src_main_legalcell",
+      "src_main_legalpage",
+      "src_main_movefocus",
+      "src_main_parsestate",
+      "src_main_relays",
+      "src_main_rendergame",
+      "src_main_reset",
+      "src_main_restoresaved",
+      "src_main_resulttext",
+      "src_main_selectcell",
+      "src_main_showtoast",
+      "src_main_terrainnames",
+      "src_main_today",
+      "src_main_undo"
+    ],
+    "1": [
+      "ref_src",
+      "ref_tests",
+      "ref_vite_client",
+      "ref_vite_config_ts",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowimportingtsextensions",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduledetection",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_compileroptions_types",
+      "tsconfig_compileroptions_usedefineforclassfields",
+      "tsconfig_include"
+    ],
+    "2": [
+      "src_game",
+      "src_game_cell",
+      "src_game_createmap",
+      "src_game_daynumber",
+      "src_game_hashseed",
+      "src_game_hexdistance",
+      "src_game_isotoday",
+      "src_game_issolved",
+      "src_game_mapdata",
+      "src_game_random",
+      "src_game_routedistances",
+      "src_game_terrain",
+      "src_main_gamemarkup",
+      "src_main_point",
+      "src_main_routesvg",
+      "src_main_statustext",
+      "tests_game_test"
+    ],
+    "3": [
+      "axe_core_playwright",
+      "package_devdependencies",
+      "package_devdependencies_axe_core_playwright",
+      "package_devdependencies_playwright_test",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vite",
+      "package_devdependencies_vitest",
+      "playwright_test",
+      "typescript",
+      "vite",
+      "vitest"
+    ],
+    "4": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_test",
+      "package_scripts_test_e2e",
+      "package_type",
+      "package_version"
+    ],
+    "5": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_es2022",
+      "ref_webworker",
+      "tsconfig_compileroptions_lib"
+    ],
+    "6": [
+      "public_sw",
+      "public_sw_shell"
+    ],
+    "7": [
+      "playwright_config"
+    ],
+    "8": [
+      "tests_e2e_app_spec"
+    ],
+    "9": [
+      "vite_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2077922077922078,
+    "1": 0.1111111111111111,
+    "2": 0.22058823529411764,
+    "3": 0.18181818181818182,
+    "4": 0.2,
+    "5": 0.4,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 13
+    },
+    {
+      "id": "src_main_bindgame",
+      "label": "bindGame()",
+      "degree": 11
+    },
+    {
+      "id": "src_game_cellkey",
+      "label": "cellKey()",
+      "degree": 10
+    },
+    {
+      "id": "src_game_createmap",
+      "label": "createMap()",
+      "degree": 10
+    },
+    {
+      "id": "src_game_hexdistance",
+      "label": "hexDistance()",
+      "degree": 7
+    },
+    {
+      "id": "src_game_routedistances",
+      "label": "routeDistances()",
+      "degree": 7
+    },
+    {
+      "id": "src_main_rendergame",
+      "label": "renderGame()",
+      "degree": 7
+    },
+    {
+      "id": "src_game_issolved",
+      "label": "isSolved()",
+      "degree": 6
+    },
+    {
+      "id": "src_main_gamemarkup",
+      "label": "gameMarkup()",
+      "degree": 6
+    },
+    {
+      "id": "src_main_selectcell",
+      "label": "selectCell()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "parseState()",
+      "target": "createMap()",
+      "source_files": [
+        "src/main.ts",
+        "src/game.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "reset()",
+      "target": "createMap()",
+      "source_files": [
+        "src/main.ts",
+        "src/game.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "restoreSaved()",
+      "target": "isSolved()",
+      "source_files": [
+        "src/main.ts",
+        "src/game.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "selectCell()",
+      "target": "isSolved()",
+      "source_files": [
+        "src/main.ts",
+        "src/game.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "routeSvg()",
+      "target": "hexDistance()",
+      "source_files": [
+        "src/main.ts",
+        "src/game.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
