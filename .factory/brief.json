@@ -1,0 +1,10 @@
+{
+  "slug": "daily-range-puzzle",
+  "title": "Daily Range Puzzle",
+  "territory": "games-creative",
+  "user": "Friends who want a free, browser-based daily puzzle with a small cooperative tactical layer rather than another solitary word game.",
+  "smallest_useful_product": "Static daily seeded hex-board puzzle with fixed map scale, one cooperative link, keyboard/touch controls, and a spoiler-safe results card.",
+  "artifact_class": "static-web",
+  "monetization": "free",
+  "constraints": "Use deterministic public seeds with no personal data; make color-independent terrain markers; avoid copyrighted game rules and names; provide offline replay of prior days."
+}
