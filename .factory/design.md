@@ -84,13 +84,21 @@ destroy ink relationships and the map's legibility.
   `/opt/fleet/lib/gen-image.sh`, 2026-08-28. Original generated asset for this
   product. Source PNG and prompt sidecar retained under `assets/src/`; shipped
   WebP is optimized to ≤300 KB. Footer discloses AI-assisted artwork.
+- `public/social-preview.webp` (1200×630) and
+  `public/apple-touch-icon.png` are cropped, optimized derivatives of that
+  retained source PNG. They introduce no new subject matter or license.
 
 ## Accessibility and states
 
 - Focus is a 3 px mustard/black double ring, never color-only.
-- Loading uses text (`Printing today’s map…`); a deterministic fallback map is
-  available if date parsing fails. Offline mode is a persistent, dismissible
-  field-note banner and prior dates remain playable from local shell/cache.
-- Results use words plus a five-line text pattern. Dialogs move focus to the
-  heading and return it to the trigger. A board summary mirrors route status
-  for screen readers.
+- Invalid dates and unusable shared moves show a recovery note and open a
+  playable deterministic map. First-move sharing appears only when the
+  recipient has a valid continuation.
+- The `/demo` route begins with a sample first relay and keeps its completion
+  record under `demo:daily-range:*`, separate from real completion storage.
+  Its banner exposes both reset and start-for-real actions.
+- Offline state is written in a visible banner. The service worker caches the
+  shell and loaded app files after a first visit. Route status always mirrors
+  the line colors in words for screen readers.
+- When a browser blocks copying, an on-page textarea gives a selectable share
+  message instead of silently failing.

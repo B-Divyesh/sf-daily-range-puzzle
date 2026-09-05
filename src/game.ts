@@ -47,7 +47,8 @@ export function createMap(day: string): MapData {
   const target = { col: 6, row: 2, terrain: 'open' as Terrain };
   const solutionA = { col: 2, row: 1 + Math.floor(rand() * 3) };
   const candidatesB = [1, 2, 3].map((row) => ({ col: 4, row }));
-  const solutionB = candidatesB.filter((cell) => hexDistance(solutionA, cell) <= 3 && hexDistance(cell, target) <= 3)[Math.floor(rand() * candidatesB.filter((cell) => hexDistance(solutionA, cell) <= 3 && hexDistance(cell, target) <= 3).length)];
+  const reachableB = candidatesB.filter((cell) => hexDistance(solutionA, cell) <= 3 && hexDistance(cell, target) <= 3);
+  const solutionB = reachableB[Math.floor(rand() * reachableB.length)]!;
   const guaranteed = new Set([cellKey(start), cellKey(target), cellKey(solutionA), cellKey(solutionB)]);
 
   for (let row = 0; row < 5; row += 1) {
@@ -76,10 +77,23 @@ export function isSolved(map: MapData, relays: Cell[]): boolean {
   return relays.length === 2 && relays.some((cell) => cell.terrain === 'lookout') && routeDistances(map, relays).every((distance) => distance <= 3);
 }
 
+export function isLegalRelayCell(map: MapData, cell: Cell): boolean {
+  return !['water', 'ridge'].includes(cell.terrain) && cellKey(cell) !== cellKey(map.start) && cellKey(cell) !== cellKey(map.target);
+}
+
+export function canFinishFromFirstRelay(map: MapData, firstRelay: Cell): boolean {
+  if (!isLegalRelayCell(map, firstRelay)) return false;
+  return map.cells.some((secondRelay) => cellKey(secondRelay) !== cellKey(firstRelay) && isLegalRelayCell(map, secondRelay) && isSolved(map, [firstRelay, secondRelay]));
+}
+
 export function isoToday(date = new Date()): string {
   return date.toISOString().slice(0, 10);
 }
 
 export function isValidDay(value: string | null, today = isoToday()): value is string {
-  return Boolean(value && /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(`${value}T00:00:00Z`)) && value <= today && value >= LAUNCH_DAY);
+  if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const [year, month, date] = value.split('-').map(Number);
+  const parsed = new Date(Date.UTC(year, month - 1, date));
+  const isRealCalendarDate = parsed.getUTCFullYear() === year && parsed.getUTCMonth() === month - 1 && parsed.getUTCDate() === date;
+  return isRealCalendarDate && value <= today && value >= LAUNCH_DAY;
 }

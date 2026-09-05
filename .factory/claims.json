@@ -1,0 +1,79 @@
+[
+  {
+    "id": "daily-map",
+    "claim": "Provides a deterministic map for each UTC date.",
+    "where": "README",
+    "test": "npm test -- -t @claim:daily-map",
+    "sandbox": "Create maps for two public dates and compare stable date-specific output."
+  },
+  {
+    "id": "map-scale",
+    "claim": "Each adjacent hex step measures 1 km.",
+    "where": "Map stamp",
+    "test": "npm test -- -t @claim:map-scale",
+    "sandbox": "Measure adjacent and longer hex routes in the deterministic map rules."
+  },
+  {
+    "id": "route-rules",
+    "claim": "A complete route needs two relays, a lookout, and hops of 3 km or less.",
+    "where": "How to play",
+    "test": "npm test -- -t @claim:route-rules",
+    "sandbox": "Evaluate complete and incomplete routes against the public map rules."
+  },
+  {
+    "id": "demo-sandbox",
+    "claim": "Try the sample route without changing real game data.",
+    "where": "Landing action and demo banner",
+    "test": "npm run test:e2e -- --grep @claim:demo-sandbox",
+    "sandbox": "Fresh browser context; enter from the landing action, finish and reset the sample, then compare real and demo storage namespaces."
+  },
+  {
+    "id": "keyboard-play",
+    "claim": "Play the sample route with a keyboard.",
+    "where": "Board help",
+    "test": "npm run test:e2e -- --grep @claim:keyboard-play",
+    "sandbox": "Fresh demo route; focus a relay tile and press Enter to finish it."
+  },
+  {
+    "id": "offline-reload",
+    "claim": "Works offline after your first visit.",
+    "where": "Landing facts",
+    "test": "npm run test:e2e -- --grep @claim:offline-reload",
+    "sandbox": "Fresh demo context; load once online, wait for the service worker cache, set offline, then reload."
+  },
+  {
+    "id": "privacy-local",
+    "claim": "No account or tracking is needed to play, and demo play makes no third-party requests.",
+    "where": "Landing facts and privacy page",
+    "test": "npm run test:e2e -- --grep @claim:privacy-local",
+    "sandbox": "Fresh demo context; record all requests and storage while completing the sample."
+  },
+  {
+    "id": "free-to-play",
+    "claim": "Play the sample free, without sign-in or payment.",
+    "where": "Landing facts and terms",
+    "test": "npm run test:e2e -- --grep @claim:free-to-play",
+    "sandbox": "Fresh demo context; complete the sample and verify no sign-in, payment, or checkout path is present."
+  },
+  {
+    "id": "share-finishable",
+    "claim": "Only first moves a friend can finish are offered for sharing.",
+    "where": "First-move share action",
+    "test": "npm run test:e2e -- --grep @claim:share-finishable",
+    "sandbox": "Fresh starter-mode demo; compare a dead-end move with a finishable move and reject an incoming dead-end link."
+  },
+  {
+    "id": "share-link-privacy",
+    "claim": "A first-move link contains only the map date and relay tile.",
+    "where": "Privacy page",
+    "test": "npm run test:e2e -- --grep @claim:share-link-privacy",
+    "sandbox": "Fresh map; copy a valid first-move link and inspect its query keys."
+  },
+  {
+    "id": "spoiler-safe-results",
+    "claim": "Shared results do not include relay coordinates.",
+    "where": "Result text",
+    "test": "npm run test:e2e -- --grep @claim:spoiler-safe-results",
+    "sandbox": "Fresh demo; complete the route, copy the result, and inspect the text for coordinates."
+  }
+]
