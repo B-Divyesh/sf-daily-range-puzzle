@@ -143,6 +143,11 @@
       "degree": 10
     },
     {
+      "id": "src_main_rendergame",
+      "label": "renderGame()",
+      "degree": 7
+    },
+    {
       "id": "src_game_hexdistance",
       "label": "hexDistance()",
       "degree": 7
@@ -153,9 +158,9 @@
       "degree": 7
     },
     {
-      "id": "src_main_rendergame",
-      "label": "renderGame()",
-      "degree": 7
+      "id": "src_main_selectcell",
+      "label": "selectCell()",
+      "degree": 6
     },
     {
       "id": "src_game_issolved",
@@ -165,11 +170,6 @@
     {
       "id": "src_main_gamemarkup",
       "label": "gameMarkup()",
-      "degree": 6
-    },
-    {
-      "id": "src_main_selectcell",
-      "label": "selectCell()",
       "degree": 6
     }
   ],
@@ -219,8 +219,8 @@
       "why": "bridges separate communities"
     },
     {
-      "source": "routeSvg()",
-      "target": "hexDistance()",
+      "source": "bindGame()",
+      "target": "cellKey()",
       "source_files": [
         "src/main.ts",
         "src/game.ts"
